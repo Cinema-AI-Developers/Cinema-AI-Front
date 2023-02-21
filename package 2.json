@@ -1,0 +1,19 @@
+{
+  "name": "cinema-ai-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Terro216/Cinema-AI-Front.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Terro216/Cinema-AI-Front/issues"
+  },
+  "homepage": "https://github.com/Terro216/Cinema-AI-Front#readme"
+}

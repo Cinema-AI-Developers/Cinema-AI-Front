@@ -1,16 +1,8 @@
 import './styles/index.scss';
 import React from 'react';
-import {
-  createBrowserRouter,
-  createHashRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './vendor/normalize.css';
-import './vendor/fonts/fonts.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Film from './pages/Film';
 import Home from './pages/Home';

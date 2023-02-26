@@ -1,0 +1,33 @@
+.card {
+  width: 220px;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+
+  &__photo {
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  &__info {
+    padding: 10px 5px 11px 5px;
+    background-color: $main-text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__title {
+    max-width: 200px;
+    margin: 0;
+    font-weight: 900;
+    font-size: 19px;
+    line-height: 20px;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

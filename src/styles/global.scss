@@ -7,8 +7,23 @@
 }
 
 .page {
+  max-width: 1600px;
+  min-width: 300px;
+  margin: 0 auto;
   background-color: $background-color;
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 400;
   color: $main-text-color;
+}
+
+.image {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }

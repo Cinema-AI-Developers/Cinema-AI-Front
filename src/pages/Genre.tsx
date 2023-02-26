@@ -2,13 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import { api } from '../utlis/api';
 
-const Film = () => {
+const Genre = () => {
   const params = useParams();
   const id = params.id;
 
   const query = useQuery({
-    queryKey: ['film', { id }],
-    queryFn: () => api.getFilmById(id),
+    queryKey: ['genre', { id }],
+    queryFn: () => api.getGenresById(),
   });
 
   console.log(query.data);
@@ -16,4 +16,4 @@ const Film = () => {
   return <>Got:</>;
 };
 
-export default Film;
+export default Genre;

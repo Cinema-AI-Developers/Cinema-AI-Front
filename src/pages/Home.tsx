@@ -11,8 +11,6 @@ function Home() {
     },
   });
 
-  console.log(query.data);
-
   return (
     <>
       <div className='App'>Home</div>

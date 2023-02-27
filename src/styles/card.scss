@@ -65,10 +65,20 @@
     margin-top: 0.3em;
     font-family: 'Inter', Arial, sans-serif;
     font-weight: 500;
-    font-size: 16px;
-    color: $main-text-color;
+    font-size: 17px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+  }
+
+  &__info-container {
+    width: 200px;
+    margin-top: 0.5em;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Inter', Arial, sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: $secondary-text-color;
   }
 }

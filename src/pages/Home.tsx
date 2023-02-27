@@ -21,6 +21,8 @@ function Home() {
               title={filmInfo.nameRu}
               imgUrl={filmInfo.posterUrl}
               rating={filmInfo.rating}
+              year={filmInfo.year}
+              filmLength={filmInfo.filmLength}
             />
           ))
         )}

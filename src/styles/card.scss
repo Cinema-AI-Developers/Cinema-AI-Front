@@ -21,7 +21,7 @@
   &__rating {
     display: block;
     position: absolute;
-    padding: 1px 3px;
+    padding: 1px 4px;
     border-radius: 3px;
     background-color: rgba(0, 0, 0, 0.5);
     left: 2px;
@@ -63,6 +63,7 @@
     max-width: 210px;
     margin: 0;
     margin-top: 0.3em;
+    font-family: 'Inter', Arial, sans-serif;
     font-weight: 500;
     font-size: 16px;
     color: $main-text-color;

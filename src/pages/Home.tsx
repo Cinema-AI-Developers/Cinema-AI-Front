@@ -1,26 +1,29 @@
-import React from 'react';
-import { useState } from 'react';
-import { useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../utlis/api';
 
 import Card from '../components/Card';
 
 function Home() {
-  const query = useQuery({
+  const { data: filmsData, isLoading: filmsLoading } = useQuery({
     queryKey: ['top'],
-    queryFn: () => api.getTopFilms('TOP_250_BEST_FILMS', 1),
+    queryFn: () => api.getTopFilms('TOP_250_BEST_FILMS', 1).then((res) => res.data),
   });
-
-  const cards = query.data?.data.films;
 
   return (
     <>
-      <h2>Top 250 films</h2>
       <div className='cards-container'>
-        {cards?.map((cardInfo) => (
-          <Card key={cardInfo.filmId} title={cardInfo.nameRu} imgUrl={cardInfo.posterUrl} />
-        ))}
+        {filmsLoading ? (
+          <p>loading</p>
+        ) : (
+          filmsData?.films?.map((filmInfo) => (
+            <Card
+              key={filmInfo.filmId}
+              title={filmInfo.nameRu}
+              imgUrl={filmInfo.posterUrl}
+              rating={filmInfo.rating}
+            />
+          ))
+        )}
       </div>
     </>
   );

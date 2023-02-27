@@ -1,13 +1,53 @@
 .card {
   width: 220px;
-  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  background-color: transparent;
+  border: none;
+
+  &__button {
+    position: relative;
+    background-color: #000;
+    border: none;
+    transition: all 0.5s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.02) translateY(-2px);
+    }
+  }
+
+  &__rating {
+    display: block;
+    position: absolute;
+    padding: 1px 3px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 2px;
+    top: 2px;
+    font-weight: 900;
+    font-size: 17px;
+
+    &_color_red {
+      color: #e61919;
+    }
+
+    &_color_green {
+      color: #19e619;
+    }
+
+    &_color_none {
+      color: transparent;
+    }
+  }
 
   &__photo {
+    display: block;
     height: 300px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 3px;
+    opacity: 1;
   }
 
   &__info {
@@ -20,12 +60,12 @@
   }
 
   &__title {
-    max-width: 200px;
+    max-width: 210px;
     margin: 0;
-    font-weight: 900;
-    font-size: 19px;
-    line-height: 20px;
-    color: #000;
+    margin-top: 0.3em;
+    font-weight: 500;
+    font-size: 16px;
+    color: $main-text-color;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;

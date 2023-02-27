@@ -16,14 +16,9 @@
   color: $main-text-color;
 }
 
-.image {
-  width: 150px;
-  height: auto;
-  object-fit: cover;
-}
-
 .cards-container {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-gap: 20px 5px;
+  justify-items: center;
 }

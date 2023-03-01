@@ -16,9 +16,9 @@ const TopList = () => {
 
   const handleArrowClick = (direction: boolean) => {
     // Реализация случая циклирования
-    if (parseInt(page || '') == 1 && direction === false) {
+    if (pageInt == 1 && direction === false) {
       return `/top/${type}/${pagesCount}`;
-    } else if (parseInt(page || '') == pagesCount && direction === true) {
+    } else if (pageInt == pagesCount && direction === true) {
       return `/top/${type}/1`;
     } else {
       // Реализация остальных случаев

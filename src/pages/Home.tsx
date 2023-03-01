@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../utlis/api';
+import { Link } from 'react-router-dom';
 
 import Card from '../components/Card';
 
@@ -11,22 +12,7 @@ function Home() {
 
   return (
     <>
-      <div className='cards-container'>
-        {filmsLoading ? (
-          <p>loading</p>
-        ) : (
-          filmsData?.films?.map((filmInfo) => (
-            <Card
-              key={filmInfo.filmId}
-              title={filmInfo.nameRu}
-              imgUrl={filmInfo.posterUrl}
-              rating={filmInfo.rating}
-              year={filmInfo.year}
-              filmLength={filmInfo.filmLength}
-            />
-          ))
-        )}
-      </div>
+      <Link to='/top/TOP_250_BEST_FILMS/1'>Посмотреть топ 250 фильмов</Link>
     </>
   );
 }

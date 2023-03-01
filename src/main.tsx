@@ -6,6 +6,8 @@ import App from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Film from './pages/Film';
 import Home from './pages/Home';
+import Alice from './components/Alice';
+import TopList from './pages/TopList';
 
 const queryClient = new QueryClient();
 
@@ -14,6 +16,8 @@ const router = createBrowserRouter(
     <Route path='/' element={<App />}>
       <Route path='/' element={<Home />} />
       <Route path='film/:id' element={<Film />} />
+      <Route path='alice' element={<Alice />} />
+      <Route path='top/:type/:page' element={<TopList />} />
     </Route>
   )
 );

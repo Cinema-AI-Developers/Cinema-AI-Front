@@ -1,0 +1,44 @@
+.page-navigation {
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &_place_top-list {
+    margin-top: 70px;
+    margin-bottom: 50px;
+  }
+
+  &__link {
+    text-decoration: none;
+    background-size: 20px;
+    background-position: center center;
+    padding: 10px;
+
+    &_dir_next {
+      background-image: url('../img/next-page.svg');
+      background-repeat: no-repeat;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        transform: translateX(1px);
+      }
+    }
+
+    &_dir_prev {
+      background-image: url('../img/previous-page.svg');
+      background-repeat: no-repeat;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        transform: translateX(-2px);
+      }
+    }
+  }
+
+  &__info {
+    font-weight: 400;
+    font-size: 20px;
+  }
+}

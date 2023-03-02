@@ -1,20 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { api } from '../utlis/api';
+import { Link } from 'react-router-dom';
 
 function Home() {
-  const query = useQuery({
-    queryKey: ['top'],
-    queryFn: () => {
-      api.getTopFilms();
-    },
-  });
-
   return (
     <>
-      <div className='App'>Home</div>
-      <Link to={'/film/123'}>open</Link>
+      <Link to='/top/TOP_250_BEST_FILMS/1'>Топ 250 фильмов</Link>
+      <Link to='/top/TOP_100_POPULAR_FILMS/1'>Топ 100 популярных фильмов</Link>
+      <Link to='/top/TOP_AWAIT_FILMS/1'>Топ самых ожидаемых кинопремьер</Link>
     </>
   );
 }

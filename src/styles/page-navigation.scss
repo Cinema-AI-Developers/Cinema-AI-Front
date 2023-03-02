@@ -3,6 +3,8 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
 
   &_place_top-list {
     margin-top: 70px;
@@ -11,25 +13,29 @@
 
   &__link {
     text-decoration: none;
-    width: 30px;
-    height: 30px;
     background-size: 20px;
-    padding: 10px;
+    background-position: center center;
 
     &_dir_next {
       background-image: url('../img/next-page.svg');
       background-repeat: no-repeat;
       background-position: center center;
+      padding: 10px;
     }
 
     &_dir_prev {
       background-image: url('../img/previous-page.svg');
       background-repeat: no-repeat;
       background-position: center center;
+      padding: 10px;
     }
 
-    &_disabled {
-      visibility: hidden;
+    &-number {
+      padding: 5px;
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 }

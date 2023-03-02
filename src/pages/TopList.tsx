@@ -1,17 +1,23 @@
 import { useParams, NavLink } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import ReactPaginate from 'react-paginate';
 import { api, TopTypes } from '../utlis/api';
 import Card from '../components/Card';
 
 const TopList = () => {
   let { type, page } = useParams();
 
-  const { data: filmsData, isLoading: filmsLoading } = useQuery({
+  const {
+    data: filmsData,
+    isLoading: filmsLoading,
+    isError,
+  } = useQuery({
     queryKey: ['top', { type, page }],
     queryFn: () => api.getTopFilms(type as TopTypes, parseInt(page || '1')).then((res) => res.data),
   });
 
   const pageInt = parseInt(page || '1');
+  //обрез 15ти страниц в случае с топ 100 тк кол-во страниц не соотв действительности
   const pagesCount = type === 'TOP_100_POPULAR_FILMS' ? 20 : filmsData?.pagesCount;
 
   const handleArrowClick = (direction: boolean) => {
@@ -26,24 +32,60 @@ const TopList = () => {
     }
   };
 
+  const handlePageClick = () => {};
+
   return filmsLoading ? (
     <p>loading</p>
+  ) : isError ? (
+    <p>Error</p>
   ) : (
-    <>
-      <div className='cards-container'>
-        {filmsData?.films.map((filmInfo) => (
-          <Card
-            key={filmInfo.filmId}
-            title={filmInfo.nameRu}
-            imgUrl={filmInfo.posterUrlPreview}
-            rating={filmInfo.rating}
-            year={filmInfo.year}
-            filmLength={filmInfo.filmLength}
-          />
-        ))}
-      </div>
+    filmsData && (
+      <>
+        <div className='cards-container'>
+          {filmsData?.films.map((filmInfo) => (
+            <Card
+              key={filmInfo.filmId}
+              title={filmInfo.nameRu}
+              imgUrl={filmInfo.posterUrlPreview}
+              rating={filmInfo.rating}
+              year={filmInfo.year}
+              filmLength={filmInfo.filmLength}
+            />
+          ))}
+        </div>
 
-      <div className='page-navigation page-navigation_place_top-list'>
+        {pagesCount ? (
+          <ReactPaginate
+            pageCount={pagesCount}
+            breakLabel='...'
+            nextLabel={
+              <NavLink
+                to={handleArrowClick(false)}
+                className={'page-navigation__link page-navigation__link_dir_next'}></NavLink>
+            }
+            previousLabel={
+              <NavLink
+                to={handleArrowClick(false)}
+                className={'page-navigation__link page-navigation__link_dir_prev'}></NavLink>
+            }
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            containerClassName='page-navigation page-navigation_place_top-list'
+            pageClassName='page-navigation__link'
+            pageLinkClassName='page-navigation__link page-navigation__link-number'
+          />
+        ) : (
+          <p>Error</p>
+        )}
+      </>
+    )
+  );
+};
+
+export default TopList;
+
+/*
+<div className='page-navigation page-navigation_place_top-list'>
         <NavLink
           to={handleArrowClick(false)}
           className={'page-navigation__link page-navigation__link_dir_prev'}></NavLink>
@@ -52,8 +94,4 @@ const TopList = () => {
           to={handleArrowClick(true)}
           className={'page-navigation__link page-navigation__link_dir_next'}></NavLink>
       </div>
-    </>
-  );
-};
-
-export default TopList;
+*/

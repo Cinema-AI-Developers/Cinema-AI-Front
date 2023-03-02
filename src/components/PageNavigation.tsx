@@ -7,28 +7,28 @@ interface PageNavigationProps {
 }
 
 const PageNavigation = ({ pagesCount, page, type }: PageNavigationProps) => {
-  const handleArrowClick = (direction: boolean) => {
+  const handleArrowClick = (direction: string) => {
     // Реализация случая циклирования
-    if (page == 1 && direction === false) {
+    if (page == 1 && direction === 'back') {
       return `/top/${type}/${pagesCount}`;
-    } else if (page == pagesCount && direction === true) {
+    } else if (page == pagesCount && direction === 'forward') {
       return `/top/${type}/1`;
     } else {
       // Реализация остальных случаев
-      return direction ? `/top/${type}/${page + 1}` : `/top/${type}/${page - 1}`;
+      return direction === 'forward' ? `/top/${type}/${page + 1}` : `/top/${type}/${page - 1}`;
     }
   };
 
   return (
     <div className='page-navigation page-navigation_place_top-list'>
       <Link
-        to={handleArrowClick(false)}
+        to={handleArrowClick('back')}
         className={'page-navigation__link page-navigation__link_dir_prev'}></Link>
 
       <p className='page-navigation__info'>{`${page} из ${pagesCount}`}</p>
 
       <Link
-        to={handleArrowClick(true)}
+        to={handleArrowClick('forward')}
         className={'page-navigation__link page-navigation__link_dir_next'}></Link>
     </div>
   );

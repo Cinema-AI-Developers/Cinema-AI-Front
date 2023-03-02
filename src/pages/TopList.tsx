@@ -28,7 +28,7 @@ const TopList = () => {
     filmsData && (
       <>
         <div className='cards-container'>
-          {filmsData?.films.map((filmInfo) => (
+          {filmsData.films.map((filmInfo) => (
             <Card
               key={filmInfo.filmId}
               title={filmInfo.nameRu}

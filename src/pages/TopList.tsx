@@ -1,8 +1,8 @@
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
-import ReactPaginate from 'react-paginate';
 import { api, TopTypes } from '../utlis/api';
 import Card from '../components/Card';
+import PageNavigation from '../components/PageNavigation';
 
 const TopList = () => {
   let { type, page } = useParams();
@@ -19,20 +19,6 @@ const TopList = () => {
   const pageInt = parseInt(page || '1');
   //обрез 15ти страниц в случае с топ 100 тк кол-во страниц не соотв действительности
   const pagesCount = type === 'TOP_100_POPULAR_FILMS' ? 20 : filmsData?.pagesCount;
-
-  const handleArrowClick = (direction: boolean) => {
-    // Реализация случая циклирования
-    if (pageInt == 1 && direction === false) {
-      return `/top/${type}/${pagesCount}`;
-    } else if (pageInt == pagesCount && direction === true) {
-      return `/top/${type}/1`;
-    } else {
-      // Реализация остальных случаев
-      return direction ? `/top/${type}/${pageInt + 1}` : `/top/${type}/${pageInt - 1}`;
-    }
-  };
-
-  const handlePageClick = () => {};
 
   return filmsLoading ? (
     <p>loading</p>
@@ -54,44 +40,10 @@ const TopList = () => {
           ))}
         </div>
 
-        {pagesCount ? (
-          <ReactPaginate
-            pageCount={pagesCount}
-            breakLabel='...'
-            nextLabel={
-              <NavLink
-                to={handleArrowClick(false)}
-                className={'page-navigation__link page-navigation__link_dir_next'}></NavLink>
-            }
-            previousLabel={
-              <NavLink
-                to={handleArrowClick(false)}
-                className={'page-navigation__link page-navigation__link_dir_prev'}></NavLink>
-            }
-            onPageChange={handlePageClick}
-            pageRangeDisplayed={5}
-            containerClassName='page-navigation page-navigation_place_top-list'
-            pageClassName='page-navigation__link'
-            pageLinkClassName='page-navigation__link page-navigation__link-number'
-          />
-        ) : (
-          <p>Error</p>
-        )}
+        {pagesCount ? <PageNavigation pagesCount={pagesCount} page={pageInt} type={type} /> : <p>Error</p>}
       </>
     )
   );
 };
 
 export default TopList;
-
-/*
-<div className='page-navigation page-navigation_place_top-list'>
-        <NavLink
-          to={handleArrowClick(false)}
-          className={'page-navigation__link page-navigation__link_dir_prev'}></NavLink>
-
-        <NavLink
-          to={handleArrowClick(true)}
-          className={'page-navigation__link page-navigation__link_dir_next'}></NavLink>
-      </div>
-*/

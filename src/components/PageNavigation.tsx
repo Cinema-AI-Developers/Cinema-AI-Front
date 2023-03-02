@@ -7,7 +7,7 @@ interface PageNavigationProps {
 }
 
 const PageNavigation = ({ pagesCount, page, type }: PageNavigationProps) => {
-  const handleArrowClick = (direction: string) => {
+  const handleArrowClick = (direction: 'forward' | 'back') => {
     // Реализация случая циклирования
     if (page == 1 && direction === 'back') {
       return `/top/${type}/${pagesCount}`;

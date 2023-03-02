@@ -40,7 +40,7 @@ const TopList = () => {
           ))}
         </div>
 
-        {pagesCount ? <PageNavigation pagesCount={pagesCount} page={pageInt} type={type} /> : <p>Error</p>}
+        {pagesCount && <PageNavigation pagesCount={pagesCount} page={pageInt} type={type} />}
       </>
     )
   );

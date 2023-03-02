@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface PageNavigationProps {
   page: number;
@@ -21,15 +21,15 @@ const PageNavigation = ({ pagesCount, page, type }: PageNavigationProps) => {
 
   return (
     <div className='page-navigation page-navigation_place_top-list'>
-      <NavLink
+      <Link
         to={handleArrowClick(false)}
-        className={'page-navigation__link page-navigation__link_dir_prev'}></NavLink>
+        className={'page-navigation__link page-navigation__link_dir_prev'}></Link>
 
       <p className='page-navigation__info'>{`${page} из ${pagesCount}`}</p>
 
-      <NavLink
+      <Link
         to={handleArrowClick(true)}
-        className={'page-navigation__link page-navigation__link_dir_next'}></NavLink>
+        className={'page-navigation__link page-navigation__link_dir_next'}></Link>
     </div>
   );
 };

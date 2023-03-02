@@ -19,11 +19,21 @@
     &_dir_next {
       background-image: url('../img/next-page.svg');
       background-repeat: no-repeat;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        transform: translateX(1px);
+      }
     }
 
     &_dir_prev {
       background-image: url('../img/previous-page.svg');
       background-repeat: no-repeat;
+      transition: all 0.3s ease-in;
+
+      &:hover {
+        transform: translateX(-2px);
+      }
     }
   }
 

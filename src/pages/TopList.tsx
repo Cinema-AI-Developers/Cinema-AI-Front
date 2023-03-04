@@ -1,4 +1,4 @@
-import { redirect, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { api, TopTypes } from '../utlis/api';
 import Card from '../components/Card';
@@ -19,10 +19,6 @@ const TopList = () => {
   const pageInt = parseInt(page || '1');
   //обрез 15ти страниц в случае с топ 100 тк кол-во страниц не соотв действительности
   const pagesCount = type === 'TOP_100_POPULAR_FILMS' ? 20 : filmsData?.pagesCount;
-
-  const handleCardClick = (id: string | undefined) => {
-    redirect(`/film/${id}`);
-  };
 
   return filmsLoading ? (
     <p>loading</p>

@@ -4,19 +4,6 @@ axios.defaults.baseURL = 'https://kinopoiskapiunofficial.tech/api';
 axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-const getFilmById = (id: string | undefined) => {
-  fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': import.meta.env.VITE_KINOPOISK_KEY,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => console.log(json))
-    .catch((err) => console.log(err));
-};
-
 interface FilmResponse {
   filmId: number;
   nameRu?: string;
@@ -30,6 +17,22 @@ interface FilmResponse {
   posterUrl: string;
   posterUrlPreview: string;
 }
+
+const getFilmById = (id: string | undefined) => {
+  return axios.get<FilmResponse>(`/v2.2/films/${id}`).then((res) => res.data);
+  /*
+  return fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
+    method: 'GET',
+    headers: {
+      'X-API-KEY': import.meta.env.VITE_KINOPOISK_KEY,
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((res) => res.json())
+    .then((json) => console.log(json))
+    .catch((err) => console.log(err));
+    */
+};
 
 interface TopFilmsResponse {
   pagesCount: number;

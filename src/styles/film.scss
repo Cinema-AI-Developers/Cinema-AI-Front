@@ -3,4 +3,14 @@
     font-weight: 900;
     font-size: 60px;
   }
+
+  &__container {
+    width: 400px;
+    position: relative;
+  }
+}
+
+#yohoho-iframe {
+  width: 400px !important;
+  height: 300px !important;
 }

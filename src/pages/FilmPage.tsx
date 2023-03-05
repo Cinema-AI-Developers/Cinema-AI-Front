@@ -14,7 +14,15 @@ const FilmPage = () => {
     queryFn: () => api.getFilmById(id),
   });
 
-  return filmIsLoading ? <p>Loading...</p> : isError ? <p>Error</p> : <p>{filmData.nameRu}</p>;
+  return filmIsLoading ? (
+    <p>Loading...</p>
+  ) : isError ? (
+    <p>Error</p>
+  ) : (
+    <>
+      <h1 className='film__name'>{filmData.nameRu}</h1>
+    </>
+  );
 };
 
 export default FilmPage;

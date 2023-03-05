@@ -20,7 +20,7 @@ const FilmPage = () => {
     <p>Error</p>
   ) : (
     <>
-      <h1 className='film__name'>{filmData.nameRu}</h1>
+      <h2 className='film__name'>{filmData.nameRu}</h2>
     </>
   );
 };

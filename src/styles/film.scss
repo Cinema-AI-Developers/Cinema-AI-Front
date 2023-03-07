@@ -1,0 +1,16 @@
+.film {
+  &__name {
+    font-weight: 900;
+    font-size: 60px;
+  }
+
+  &__container {
+    width: 800px;
+    position: relative;
+  }
+}
+
+#yohoho-iframe {
+  width: 800px !important;
+  height: 500px !important;
+}

@@ -36,6 +36,7 @@ const TopList = () => {
               rating={filmInfo.rating}
               year={filmInfo.year}
               filmLength={filmInfo.filmLength}
+              filmId={filmInfo.filmId}
             />
           ))}
         </div>

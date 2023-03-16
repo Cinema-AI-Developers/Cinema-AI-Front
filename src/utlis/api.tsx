@@ -3,6 +3,7 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://kinopoiskapiunofficial.tech/api';
 axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
 interface FilmResponse {
   filmId: number;

@@ -22,3 +22,13 @@
   grid-gap: 40px 5px;
   justify-items: center;
 }
+
+.top-link {
+  display: block;
+  color: $main-text-color;
+  text-decoration: none;
+
+  &_last {
+    margin-bottom: 50px;
+  }
+}

@@ -1,0 +1,30 @@
+.rating {
+  display: block;
+
+  &_place_card {
+    position: absolute;
+    padding: 1px 4px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    left: 2px;
+    top: 2px;
+    font-weight: 900;
+    font-size: 17px;
+  }
+
+  &_place_filmPage {
+    font-size: 1.5em;
+  }
+
+  &_color_red {
+    color: #e61919;
+  }
+
+  &_color_green {
+    color: #19e619;
+  }
+
+  &_color_yellow {
+    color: #ffea00;
+  }
+}

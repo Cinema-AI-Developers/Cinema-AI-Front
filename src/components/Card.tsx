@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router';
+import Rating from './Rating';
 
 interface CardProps {
   title: string | undefined;
@@ -10,12 +11,6 @@ interface CardProps {
 }
 
 const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) => {
-  const checkRating = (rating: number | undefined | string) => {
-    if (rating) {
-      return rating >= 6 ? 'card__rating_color_green' : 'card__rating_color_red';
-    }
-  };
-
   const validateRating = (rating: number | undefined | string) => {
     return rating && rating.toString().includes('%') ? false : true;
   };
@@ -30,7 +25,7 @@ const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) =>
   return (
     <div className='card'>
       <button className='card__button' onClick={onCardClick}>
-        {validateRating(rating) && <p className={`card__rating ${checkRating(rating)}`}>{rating}</p>}
+        {validateRating(rating) && <Rating rating={rating} place='card' />}
         <img src={imgUrl} alt={title} className='card__photo' />
       </button>
       <p className='card__title'>{title}</p>

@@ -23,8 +23,8 @@ interface FilmResponse {
   countries: Country[];
   genres: Genre[];
   rating?: number;
-  ratingKinopoisk: number;
-  ratingImdb: number;
+  ratingKinopoisk?: number;
+  ratingImdb?: number;
   ratingVoteCount?: number;
   posterUrl: string;
   posterUrlPreview: string;

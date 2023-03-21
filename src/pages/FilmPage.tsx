@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../utlis/api';
+import Rating from '../components/Rating';
 
 const FilmPage = () => {
   const { id } = useParams();
@@ -97,18 +98,33 @@ const FilmPage = () => {
             </li>
           )}
 
-          {filmData.ratingKinopoisk && (
+          {(filmData.ratingKinopoisk || filmData.ratingImdb) && (
             <li className='film__info-item'>
-              <p className='film__info-ratind'>Рейтинг Кинопоиск: {filmData.ratingKinopoisk}</p>
-            </li>
-          )}
+              <div className='film__ratings-container'>
+                {filmData.ratingKinopoisk && (
+                  <div className='film__rating-item'>
+                    <p className='film__rating-count'>
+                      {<Rating rating={filmData.ratingKinopoisk} place='filmPage' />}
+                    </p>
 
-          {filmData.ratingImdb && (
-            <li className='film__info-item'>
-              <p className='film__info-ratind'>Рейтинг Imdb: {filmData.ratingImdb}</p>
+                    <p className='film__rating-source'>Рейтинг Кинопоиск</p>
+                  </div>
+                )}
+
+                {filmData.ratingImdb && (
+                  <div className='film__rating-item'>
+                    <p className='film__rating-count'>
+                      {<Rating rating={filmData.ratingImdb} place='filmPage' />}
+                    </p>
+
+                    <p className='film__rating-source'>Рейтинг Imdb</p>
+                  </div>
+                )}
+              </div>
             </li>
           )}
         </ul>
+        <div className='film__rating'></div>
       </div>
       <p className='film__description-title'>Описание:</p>
       <p className='film__description'>{filmData.description}</p>

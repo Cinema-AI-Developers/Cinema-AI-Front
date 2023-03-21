@@ -1,16 +1,55 @@
 .film {
   &__name {
     font-weight: 900;
-    font-size: 60px;
+    font-size: 3.5em;
+    margin-bottom: 30px;
+  }
+
+  &__content {
+    display: flex;
+    padding: 0 0 2.5% 0;
+
+    @media screen and (max-width: 950px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__info {
+    max-width: 100%;
+    margin-left: 3%;
+    list-style: none;
+    font-size: 1.02em;
+
+    @media screen and (max-width: 500px) {
+      margin-left: 0;
+    }
+  }
+
+  &__info-title {
+    font-weight: 500;
+    font-size: 2em;
+    margin-bottom: 5%;
+  }
+
+  &__info-item {
+    margin-bottom: 4%;
   }
 
   &__container {
-    width: 700px;
+    width: 60%;
     position: relative;
+
+    @media screen and (max-width: 950px) {
+      width: 100%;
+    }
+
+    @media screen and (max-width: 500px) {
+      width: 80%;
+    }
   }
 }
 
-#yohoho-iframe {
-  width: 700px !important;
-  height: 400px !important;
+#yohoho {
+  width: 100% !important;
 }

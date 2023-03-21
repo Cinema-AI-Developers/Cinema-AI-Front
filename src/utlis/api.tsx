@@ -5,18 +5,32 @@ axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
+interface Country {
+  country: string;
+}
+
+interface Genre {
+  genre: string;
+}
 interface FilmResponse {
   filmId: number;
   nameRu?: string;
   nameEn?: string;
   year?: string;
+  startYear: string;
+  endYear: string;
   filmLength?: string;
-  countries: [];
-  genres: [];
+  countries: Country[];
+  genres: Genre[];
   rating?: number;
+  ratingKinopoisk: number;
+  ratingImdb: number;
   ratingVoteCount?: number;
   posterUrl: string;
   posterUrlPreview: string;
+  nameOriginal?: string;
+  description: string;
+  type: string;
 }
 
 const getFilmById = (id: string | undefined) => {

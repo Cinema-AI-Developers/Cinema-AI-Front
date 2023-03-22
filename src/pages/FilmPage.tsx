@@ -124,9 +124,6 @@ const FilmPage = () => {
             </li>
           )}
         </ul>
-        <div className='film__rating'></div>
-      </div>
-      <div className='film__content'>
         <div className='film__description-container'>
           <p className='film__description-title'>Описание:</p>
           <p className='film__description'>{filmData.description}</p>

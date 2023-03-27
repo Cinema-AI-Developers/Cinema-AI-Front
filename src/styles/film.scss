@@ -6,32 +6,25 @@
   }
 
   &__content {
-    display: grid;
-    grid-template-areas:
-      'player  info '
-      'player  info '
-      'desc    rating';
-    gap: 0 2%;
+    display: flex;
     padding: 0 0 0 1%;
     font-family: 'Inter', Arial, sans-serif;
+  }
 
-    @media screen and (max-width: 1070px) {
-      grid-template-areas:
-        'player'
-        'info'
-        'desc'
-        'rating';
-      gap: 2% 0;
-    }
+  &__main-container {
+    max-width: 65%;
+  }
+
+  &__aside-container {
+    margin-left: 3%;
   }
 
   &__info {
-    grid-area: info;
     list-style: none;
     font-size: 1.02em;
     background-color: $secondary-background-color;
     border-radius: 5px;
-    padding: 20px 30px 0 30px;
+    padding: 20px 30px 20px 30px;
   }
 
   &__info-title {
@@ -45,7 +38,6 @@
   }
 
   &__container {
-    grid-area: player;
     position: relative;
   }
 
@@ -67,7 +59,6 @@
   }
 
   &__description-container {
-    grid-area: desc;
     max-width: 95%;
     margin-top: 5%;
   }
@@ -83,7 +74,6 @@
   }
 
   &__user-rating-container {
-    grid-area: rating;
     margin-top: 10%;
   }
 }

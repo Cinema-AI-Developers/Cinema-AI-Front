@@ -50,7 +50,9 @@ const FilmPage = () => {
           <div id='yohoho' data-kinopoisk={`${id}`}></div>
         </div>
         <ul className='film__info'>
-          <p className='film__info-title'>Информация о фильме:</p>
+          <p className='film__info-title'>
+            Информация о {filmData.type === 'TV_SERIES' ? 'сериале' : 'фильме'}:
+          </p>
 
           {filmData.nameOriginal && (
             <li className='film__info-item'>

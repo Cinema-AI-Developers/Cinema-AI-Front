@@ -1,3 +1,3 @@
 # cinema-ai
 
-текущая версию сайта: https://cinema-ai.web.app/
+текущая версия сайта: https://cinema-ai.web.app/

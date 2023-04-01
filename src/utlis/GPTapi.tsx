@@ -37,7 +37,7 @@ enum Role {
   DESCRIPTION = 'Paraphrase the text. Keep the original meaning, tell the text in the style of the movie.',
 }
 
-const sendMessageChatGPT = async (userMessage: string, role: Role): Promise<string> => {
+const sendMessageChatGPT = async (userMessage: string, role: Role) => {
   return (
     await openai.post<ChatAIResponse>('/chat/completions', {
       model: 'gpt-3.5-turbo',

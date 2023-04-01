@@ -33,7 +33,7 @@ interface ChatAIResponse {
   };
 }
 
-const sendMessageGPT = async (userMessage: string): Promise<string> => {
+const sendMessageChatGPT = async (userMessage: string): Promise<string> => {
   return (
     await openai.post<ChatAIResponse>('/chat/completions', {
       model: 'gpt-3.5-turbo',
@@ -51,7 +51,7 @@ const sendMessageGPT = async (userMessage: string): Promise<string> => {
   ).data.choices[0].message.content.trim();
 };
 
-const sendTextGPT = async (prompt: string): Promise<string> => {
+const sendTextGPT3 = async (prompt: string): Promise<string> => {
   return (
     await openai.post<ChatAIResponse>('/completions', {
       model: 'text-davinci-003',
@@ -62,8 +62,8 @@ const sendTextGPT = async (prompt: string): Promise<string> => {
 };
 
 export const GPTapi = {
-  sendMessageGPT,
-  sendTextGPT,
+  sendMessageChatGPT,
+  sendTextGPT3,
 };
 
 // const userMessage = 'Я хочу посмотреть фильм о Филлипе';

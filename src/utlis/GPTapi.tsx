@@ -5,7 +5,7 @@ const openai = axios.create({
   headers: { Authorization: `Bearer ${import.meta.env.VITE_OPENAI_API}` },
 });
 
-interface AIResponse {
+interface ChatAIResponse {
   id: string;
   object: string;
   created: number;
@@ -16,10 +16,12 @@ interface AIResponse {
     total_tokens: number;
   };
   choices: {
+    text: string;
     message: {
       role: string;
       content: string;
     };
+    logprobs: number;
     finish_reason: string;
     index: number;
   }[];
@@ -33,7 +35,7 @@ interface AIResponse {
 
 const sendMessageGPT = async (userMessage: string): Promise<string> => {
   return (
-    await openai.post<AIResponse>('/chat/completions', {
+    await openai.post<ChatAIResponse>('/chat/completions', {
       model: 'gpt-3.5-turbo',
       messages: [
         {
@@ -49,10 +51,21 @@ const sendMessageGPT = async (userMessage: string): Promise<string> => {
   ).data.choices[0].message.content.trim();
 };
 
+const sendTextGPT = async (prompt: string): Promise<string> => {
+  return (
+    await openai.post<ChatAIResponse>('/completions', {
+      model: 'text-davinci-003',
+      prompt: prompt,
+      max_tokens: 100,
+    })
+  ).data.choices[0].text.trim();
+};
+
 export const GPTapi = {
   sendMessageGPT,
+  sendTextGPT,
 };
 
 // const userMessage = 'Я хочу посмотреть фильм о Филлипе';
-// const assistantResponse = GPTapi.sendMessageGPT(userMessage);
+// const assistantResponse = GPTapi.sendTextGPT(userMessage);
 // console.log(assistantResponse);

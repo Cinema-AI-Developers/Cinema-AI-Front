@@ -1,0 +1,29 @@
+.chat {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: 70%;
+  //   background-color: pink;
+  &__button {
+    all: unset;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+    width: 10%;
+    color: black;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: lightblue;
+    cursor: pointer;
+  }
+  &__window {
+    position: relative;
+    bottom: 0px;
+    right: -10%;
+    width: 30%;
+    background-color: green;
+    visibility: hidden;
+  }
+}

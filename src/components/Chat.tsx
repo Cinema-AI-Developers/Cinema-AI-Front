@@ -1,8 +1,9 @@
 const Chat = (): JSX.Element => {
   return (
-    <a href='https://alice-s-i.github.io/first_html/recipes.html' className='alice'>
-      chat
-    </a>
+    <div className='chat'>
+      <div className='chat__window'>hi there</div>
+      <button className='chat__button'>Open chat</button>
+    </div>
   );
 };
 

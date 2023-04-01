@@ -12,6 +12,7 @@ interface Country {
 interface Genre {
   genre: string;
 }
+
 interface FilmResponse {
   filmId: number;
   nameRu?: string;

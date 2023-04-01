@@ -31,23 +31,23 @@ interface AIResponse {
   };
 }
 
-async function sendMessageGPT(userMessage: string): Promise<string> {
-  const response = await openai.post<AIResponse>('/chat/completions', {
-    model: 'gpt-3.5-turbo',
-    messages: [
-      {
-        role: 'system',
-        content: 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
-      },
-      {
-        role: 'user',
-        content: 'Я хочу посмотреть фильмы о членах',
-      },
-    ],
-  });
-  const assistantResponse = response.data.choices[0].message.content.trim();
-  return assistantResponse;
-}
+const sendMessageGPT = async (userMessage: string): Promise<string> => {
+  return (
+    await openai.post<AIResponse>('/chat/completions', {
+      model: 'gpt-3.5-turbo',
+      messages: [
+        {
+          role: 'system',
+          content: 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
+        },
+        {
+          role: 'user',
+          content: userMessage,
+        },
+      ],
+    })
+  ).data.choices[0].message.content.trim();
+};
 
 export const GPTapi = {
   sendMessageGPT,

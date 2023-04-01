@@ -32,15 +32,19 @@ interface ChatAIResponse {
     code: number;
   };
 }
+enum Role {
+  CHAT = 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
+  DESCRIPTION = 'Paraphrase the text. Keep the original meaning, tell the text in the style of the movie.',
+}
 
-const sendMessageChatGPT = async (userMessage: string): Promise<string> => {
+const sendMessageChatGPT = async (userMessage: string, role: Role): Promise<string> => {
   return (
     await openai.post<ChatAIResponse>('/chat/completions', {
       model: 'gpt-3.5-turbo',
       messages: [
         {
           role: 'system',
-          content: 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
+          content: role,
         },
         {
           role: 'user',
@@ -64,8 +68,5 @@ const sendTextGPT3 = async (prompt: string): Promise<string> => {
 export const GPTapi = {
   sendMessageChatGPT,
   sendTextGPT3,
+  Role,
 };
-
-// const userMessage = 'Я хочу посмотреть фильм о Филлипе';
-// const assistantResponse = GPTapi.sendTextGPT(userMessage);
-// console.log(assistantResponse);

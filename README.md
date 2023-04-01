@@ -5,7 +5,7 @@
 ## Переменные окружения:
 
 ```
-VITE_KINOPOISK_KEY=
+VITE_KINOPOISK_API=
 VITE_OPENAI_API=
 VITE_FIREBASE_KEY=
 ```

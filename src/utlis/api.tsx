@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://kinopoiskapiunofficial.tech/api';
-axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_KEY;
+axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_API;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
@@ -50,7 +50,7 @@ const getTopFilms = (type: TopTypes = 'TOP_250_BEST_FILMS', page: number = 1) =>
   return fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top/?type=${type}&page=${page}`, {
     method: 'GET',
     headers: {
-      'X-API-KEY': import.meta.env.VITE_KINOPOISK_KEY,
+      'X-API-KEY': import.meta.env.VITE_KINOPOISK_API,
       'Content-Type': 'application/json',
     },
   })

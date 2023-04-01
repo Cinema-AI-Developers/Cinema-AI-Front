@@ -4,6 +4,7 @@
   right: 0;
   width: 50%;
   height: 70%;
+  z-index: 10000; //above players choosing
   //   background-color: pink;
   &__button {
     all: unset;

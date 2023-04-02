@@ -35,6 +35,7 @@ interface ChatAIResponse {
 enum Role {
   CHAT = 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
   DESCRIPTION = 'Paraphrase the text. Keep the original meaning, tell the text in the style of the movie.',
+  EMPTY = '',
 }
 
 const sendMessageChatGPT = async (userMessage: string, role: Role) => {

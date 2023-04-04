@@ -25,7 +25,9 @@ const FilmPage = () => {
   } = useQuery({
     queryKey: ['film', { id }],
     queryFn: () => api.getFilmById(id),
-    onSuccess: (data) => getFilmDescription(data.description || ''),
+    onSuccess: (data) => {
+      getFilmDescription(data?.description || '');
+    },
   });
 
   const { data: filmDescription, mutate: getFilmDescription } = useMutation({

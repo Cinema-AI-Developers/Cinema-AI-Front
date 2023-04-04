@@ -13,7 +13,7 @@ interface Genre {
   genre: string;
 }
 
-interface FilmResponse {
+export interface FilmResponse {
   filmId: number;
   nameRu?: string;
   nameEn?: string;

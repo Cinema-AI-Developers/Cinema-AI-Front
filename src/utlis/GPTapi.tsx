@@ -35,6 +35,7 @@ interface ChatAIResponse {
 
 export enum Role {
   CHAT = 'Веди себя как Дэвид(мужчина), помощник в подборке фильмов в приложении CinemaAI.',
+  ILYADESCRIPTION = 'Напиши текст описания данного фильма в уникальном и завлекающем стиле',
   DESCRIPTION = 'Paraphrase the text. Keep the original meaning, tell the text in the style of the movie.',
   EMPTY = '',
 }

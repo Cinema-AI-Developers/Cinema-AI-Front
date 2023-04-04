@@ -1,8 +1,19 @@
+import { useMutation, useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
-import { useQuery } from '@tanstack/react-query';
-import { api } from '../utlis/api';
 import Rating from '../components/Rating';
+import { api } from '../utlis/api';
+import { GPTapi, Role } from '../utlis/GPTapi';
+
+const convertWatchingTime = (minutes: number) => {
+  let hours = 0;
+  while (minutes > 60) {
+    minutes -= 60;
+    hours++;
+  }
+
+  return `${hours} ч. ${minutes} мин.`;
+};
 
 const FilmPage = () => {
   const { id } = useParams();
@@ -14,7 +25,21 @@ const FilmPage = () => {
   } = useQuery({
     queryKey: ['film', { id }],
     queryFn: () => api.getFilmById(id),
+    onSuccess: (data) => getFilmDescription(data.description || ''),
   });
+
+  const { data: filmDescription, mutate: getFilmDescription } = useMutation({
+    mutationFn: (originalDescription: string) =>
+      GPTapi.sendMessageChatGPT(
+        `Фильм: ${filmData?.nameRu}; Описание: ${originalDescription}`,
+        Role.ILYADESCRIPTION
+      ), //GPTapi.sendTextGPT3(originalDescription),
+    onSuccess: (data) => {
+      console.log(data, 'ss');
+    },
+  });
+
+  useEffect(() => {});
 
   useEffect(() => {
     let script = document.createElement('script');
@@ -26,20 +51,10 @@ const FilmPage = () => {
     };
   });
 
-  const convertWatchingTime = (minutes: number) => {
-    let hours = 0;
-    while (minutes > 60) {
-      minutes -= 60;
-      hours++;
-    }
-
-    return `${hours} ч. ${minutes} мин.`;
-  };
-
   return filmIsLoading ? (
-    <p>Loading...</p>
+    <p>Загрузка...</p>
   ) : isError ? (
-    <p>Error</p>
+    <p>Ошибка :(</p>
   ) : (
     <>
       <h2 className='film__name'>{filmData.nameRu}</h2>
@@ -51,7 +66,7 @@ const FilmPage = () => {
 
           <div className='film__description-container'>
             <p className='film__description-title'>Описание:</p>
-            <p className='film__description'>{filmData.description}</p>
+            <p className='film__description'>{filmDescription || filmData.description}</p>
           </div>
         </section>
 

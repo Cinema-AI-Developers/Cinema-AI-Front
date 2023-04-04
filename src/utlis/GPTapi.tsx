@@ -32,8 +32,9 @@ interface ChatAIResponse {
     code: number;
   };
 }
-enum Role {
-  CHAT = 'Веди себя как Дэвид, помощник в подборке фильмов в приложении CinemaAI.',
+
+export enum Role {
+  CHAT = 'Веди себя как Дэвид(мужчина), помощник в подборке фильмов в приложении CinemaAI.',
   DESCRIPTION = 'Paraphrase the text. Keep the original meaning, tell the text in the style of the movie.',
   EMPTY = '',
 }
@@ -60,7 +61,7 @@ const sendTextGPT3 = async (prompt: string): Promise<string> => {
   return (
     await openai.post<ChatAIResponse>('/completions', {
       model: 'text-davinci-003',
-      prompt: prompt,
+      prompt,
       max_tokens: 100,
     })
   ).data.choices[0].text.trim();
@@ -69,5 +70,4 @@ const sendTextGPT3 = async (prompt: string): Promise<string> => {
 export const GPTapi = {
   sendMessageChatGPT,
   sendTextGPT3,
-  Role,
 };

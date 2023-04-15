@@ -34,7 +34,7 @@ const FilmPage = () => {
     mutationFn: (originalDescription: string) =>
       GPTapi.sendMessageChatGPT(
         `Фильм: ${filmData?.nameRu}; Описание: ${originalDescription}`,
-        Role.ILYADESCRIPTION
+        Role.DESCRIPTION
       ), //GPTapi.sendTextGPT3(originalDescription),
     onSuccess: (data) => {
       console.log(data, 'ss');

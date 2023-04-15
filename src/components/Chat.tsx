@@ -43,7 +43,6 @@ const Chat = (): JSX.Element => {
   });
 
   const handleSendMessage = useCallback(() => {
-    //fix double messages
     console.log('message doesnt send because there is no api for it');
     if (message) {
       setMessages((oldMessages) => {

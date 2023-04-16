@@ -25,13 +25,25 @@ const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) =>
   return (
     <div className='card'>
       <button className='card__button' onClick={onCardClick}>
-        {validateRating(rating) && <Rating rating={rating} place='card' />}
-        <img src={imgUrl} alt={title} className='card__photo' />
+                <img src={imgUrl} alt={title} className='card__photo' />
       </button>
-      <p className='card__title' onClick={onCardClick}>{title}</p>
-      <div className='card__info-container'>
-        {year && <p className='card__year'>Год: {year}</p>}
-        {filmLength && <p className='film-length'>Время: {filmLength}</p>}
+      <div style={
+        {
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '100%'
+        }
+      }>
+        <div className='card__title' onClick={onCardClick}>
+          {title}
+        </div>
+        <div className='card__info-container' id='upper'>
+          {year && <div className='card__year'> {year} </div>}
+        </div>
+      </div>
+      <div className='card__info-container' id='lower'>
+        {filmLength && <p className='film-length'> {filmLength[1]}ч {filmLength[3]}м</p>}
+        {validateRating(rating) && <Rating rating={rating} place='card__info-container' />}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 .card {
-  width: 220px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -16,7 +16,7 @@
     &:hover {
       cursor: pointer;
       transform: scale(1.02) translateY(-2px);
-      transition: 10ms;
+      transition: 100ms;
     }
   }
 
@@ -49,16 +49,29 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    cursor: pointer;
+    &:hover{
+      color: $hovered-accent-color;
+      transform: scale(1.02);
+      transition: 100ms;
+    }
   }
 
   &__info-container {
-    width: 200px;
-    margin-top: 0.5em;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'Inter', Arial, sans-serif;
-    font-weight: 400;
-    font-size: 14px;
-    color: $secondary-text-color;
+    &#upper{
+      margin: 0;
+      margin-top: 0.4em;
+      width: fit-content;
+    }
+    &#lower{
+      width: 200px;
+      margin-top: 0.5em;
+      display: flex;
+      justify-content: space-between;
+      color: $secondary-text-color;
+    }
+  }
+  &__year{
+    color: rgb(156, 156, 156);
   }
 }

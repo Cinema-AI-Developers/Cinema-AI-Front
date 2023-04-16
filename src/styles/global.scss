@@ -31,7 +31,10 @@
   display: block;
   color: $main-text-color;
   text-decoration: none;
-
+  width: fit-content;
+  &:hover{
+    color:$hovered-accent-color;
+  }
   &_last {
     margin-bottom: 50px;
   }

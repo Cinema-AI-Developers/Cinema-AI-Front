@@ -1,8 +1,10 @@
 .header{
     color: $main-text-color;
+    width: fit-content;
+    height: fit-content;
     cursor: pointer;
     &:hover{
-        color: $pointed-accent-color;
+        color: $hovered-accent-color;
     }
     
 }

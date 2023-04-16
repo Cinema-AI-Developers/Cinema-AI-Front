@@ -16,6 +16,7 @@
     &:hover {
       cursor: pointer;
       transform: scale(1.02) translateY(-2px);
+      transition: 10ms;
     }
   }
 

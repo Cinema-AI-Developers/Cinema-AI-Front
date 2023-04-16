@@ -28,7 +28,7 @@ const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) =>
         {validateRating(rating) && <Rating rating={rating} place='card' />}
         <img src={imgUrl} alt={title} className='card__photo' />
       </button>
-      <p className='card__title'>{title}</p>
+      <p className='card__title' onClick={onCardClick}>{title}</p>
       <div className='card__info-container'>
         {year && <p className='card__year'>Год: {year}</p>}
         {filmLength && <p className='film-length'>Время: {filmLength}</p>}

@@ -18,6 +18,7 @@ function Home() {
       <Link to='/top/TOP_250_BEST_FILMS/1' className='top-link'>
         Топ 250 фильмов
       </Link>
+      <br></br>
       <Link to='/top/TOP_100_POPULAR_FILMS/1' className='top-link top-link_last'>
         Топ 100 популярных фильмов
       </Link>

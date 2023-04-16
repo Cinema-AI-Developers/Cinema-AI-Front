@@ -1,0 +1,8 @@
+.header{
+    color: $main-text-color;
+    cursor: pointer;
+    &:hover{
+        color: $pointed-accent-color;
+    }
+    
+}

@@ -34,8 +34,21 @@ export interface FilmResponse {
   type: string;
 }
 
+interface FilmSearchResponse {
+  keyword: string;
+  pagesCount: number;
+  searchFilmsCountResult: number;
+  films: FilmResponse[]; //не совсем, там вроде немного отличается
+}
+
 const getFilmById = (id: string | undefined) => {
   return axios.get<FilmResponse>(`/v2.2/films/${id}`).then((res) => res.data);
+};
+
+const searchFilm = (keyword: string, page: number = 1) => {
+  return axios
+    .get<FilmSearchResponse>(`/v2.1/films/search-by-keyword`, { params: { keyword, page } })
+    .then((res) => res.data);
 };
 
 interface TopFilmsResponse {
@@ -66,6 +79,7 @@ const getTopFilms = (type: TopTypes = 'TOP_250_BEST_FILMS', page: number = 1) =>
 export const api = {
   getFilmById,
   getTopFilms,
+  searchFilm,
   //getSimilarFilms,
   //getPremiers,
   //getFilters,

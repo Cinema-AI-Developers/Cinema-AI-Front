@@ -1,23 +1,25 @@
 import { useQuery } from '@tanstack/react-query';
+import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import { api, FilmResponse } from '../utlis/api';
 
 const SearchPage = () => {
   let { keyword, page } = useParams();
+  const [inputKeyword, setInputKeyword] = useState<string>(keyword || '');
 
   const {
     data: searchData,
     isLoading: searchLoading,
     isError,
   } = useQuery({
-    queryKey: ['search', { keyword, page }],
-    queryFn: () => api.searchFilm(keyword || '', parseInt(page || '1')),
+    queryKey: ['search', { inputKeyword, page }],
+    queryFn: () => api.searchFilm(inputKeyword, parseInt(page || '1')),
   });
 
   console.log(searchData);
 
-  const pageInt = parseInt(page || '1');
+  //   const pageInt = parseInt(page || '1');
 
   return searchLoading ? (
     <p>loading</p>
@@ -26,6 +28,7 @@ const SearchPage = () => {
   ) : (
     searchData && (
       <>
+        <h2 style={{ marginBottom: 40 }}>{'Ключевое слово: ' + inputKeyword}</h2>
         <div className='cards-container'>
           {searchData.films.map((filmInfo: FilmResponse) => (
             <Card

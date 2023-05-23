@@ -13,8 +13,6 @@ function Home() {
     queryKey: ['film'],
     queryFn: () => api.getFilmById('361'),
   });
-  const [inputKeyword, setInputKeyword] = useState<string>('');
-  const navigate = useNavigate();
 
   return (
     <>
@@ -24,14 +22,6 @@ function Home() {
       <Link to='/top/TOP_100_POPULAR_FILMS/1' className='top-link top-link_last'>
         Топ 100 популярных фильмов
       </Link>
-
-      <input
-        placeholder='Название фильма'
-        value={inputKeyword}
-        onChange={(e) => setInputKeyword(e.target.value)}></input>
-      <button onClick={() => navigate(`/search/${inputKeyword}/1`)} style={{ marginBottom: 20 }}>
-        Поиск
-      </button>
 
       {isError ? (
         <p>error</p>

@@ -1,0 +1,58 @@
+.header {
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__title {
+    margin: 0;
+    font-weight: 900;
+    font-size: 2.5em;
+    text-decoration: none;
+    color: $main-text-color;
+    transition: transform 0.3s linear;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__chat-block {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__chat-input {
+    width: 70%;
+    padding: 10px 5px;
+    background-color: transparent;
+    color: $main-text-color;
+    border: none;
+    border-bottom: 2px solid #727285;
+    transition: border-color 0.3s ease-in;
+
+    &:focus {
+      outline: none;
+      border-color: $main-text-color;
+    }
+  }
+
+  &__chat-button {
+    width: 25%;
+    padding: 5px;
+    border: 2px solid $main-text-color;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    color: $main-text-color;
+    transition: all 0.3s linear;
+    font-size: 1.1em;
+    line-height: 1.2em;
+
+    &:hover {
+      background-color: $main-text-color;
+      color: $background-color;
+    }
+  }
+}

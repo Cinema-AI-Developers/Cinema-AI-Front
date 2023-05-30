@@ -1,0 +1,20 @@
+.top-link {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.3em;
+  transition: opacity 0.3s ease-in;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &__block {
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+}

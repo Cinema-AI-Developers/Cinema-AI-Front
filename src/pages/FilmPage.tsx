@@ -150,10 +150,6 @@ const FilmPage = () => {
               </li>
             )}
           </ul>
-
-          <div className='film__user-rating-container'>
-            <p>Оценки</p>
-          </div>
         </aside>
       </div>
     </>

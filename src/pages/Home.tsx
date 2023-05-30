@@ -1,43 +1,40 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Card from '../components/Card';
+import { Link } from 'react-router-dom';
 import { api } from '../utlis/api';
+import GenreLine from '../components/GenreLine';
+
+const genres = [25, 28];
 
 function Home() {
-  const {
-    data: filmData,
-    isLoading,
-    isError,
-  } = useQuery({
-    queryKey: ['film'],
-    queryFn: () => api.getFilmById('361'),
+  const { data: filters } = useQuery({
+    queryKey: ['filter'],
+    queryFn: () => api.getFilters(),
   });
+
+  console.log(filters);
 
   return (
     <>
-      <Link to='/top/TOP_250_BEST_FILMS/1' className='top-link'>
-        Топ 250 фильмов
-      </Link>
-      <Link to='/top/TOP_100_POPULAR_FILMS/1' className='top-link top-link_last'>
-        Топ 100 популярных фильмов
-      </Link>
+      <div className='top-link__block'>
+        <Link to='/top/TOP_250_BEST_FILMS/1' className='top-link'>
+          Топ 250 фильмов
+        </Link>
+        <Link to='/top/TOP_100_POPULAR_FILMS/1' className='top-link top-link_last'>
+          Топ 100 популярных фильмов
+        </Link>
+      </div>
 
-      {isError ? (
-        <p>error</p>
-      ) : isLoading ? (
-        <p>loading</p>
-      ) : (
-        <Card
-          key={filmData.filmId}
-          title={filmData.nameRu}
-          imgUrl={filmData.posterUrlPreview}
-          rating={filmData.rating}
-          year={filmData.year}
-          filmLength={filmData.filmLength}
-          filmId={361}
-        />
-      )}
+      {filters?.genres
+        .filter((genre) => !genres.includes(genre.id))
+        .map((genre) => {
+          return (
+            <GenreLine
+              key={genre.id}
+              genreId={genre.id}
+              genreName={genre.genre.slice(0, 1).toUpperCase() + genre.genre.slice(1)}
+            />
+          );
+        })}
     </>
   );
 }

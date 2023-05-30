@@ -11,10 +11,12 @@ interface Country {
 
 interface Genre {
   genre: string;
+  id: number;
 }
 
 export interface FilmResponse {
   filmId: number;
+  kinopoiskId: number;
   nameRu?: string;
   nameEn?: string;
   year?: string;
@@ -41,6 +43,17 @@ interface FilmSearchResponse {
   films: FilmResponse[]; //не совсем, там вроде немного отличается
 }
 
+interface GenresResponce {
+  genres: Genre[];
+  countries: Country[];
+}
+
+interface FilterResponse {
+  items: FilmResponse[];
+  total: number;
+  totalPages: number;
+}
+
 const getFilmById = (id: string | undefined) => {
   return axios.get<FilmResponse>(`/v2.2/films/${id}`).then((res) => res.data);
 };
@@ -60,20 +73,18 @@ export type TopTypes = 'TOP_250_BEST_FILMS' | 'TOP_100_POPULAR_FILMS' | 'TOP_AWA
 
 const getTopFilms = (type: TopTypes = 'TOP_250_BEST_FILMS', page: number = 1) => {
   return axios.get<TopFilmsResponse>(`/v2.2/films/top/?type=${type}&page=${page}`);
-  /*
-  return fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top/?type=${type}&page=${page}`, {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': import.meta.env.VITE_KINOPOISK_API,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      return res;
-    })
-    .catch((err) => console.log(err));
-  */
+};
+
+const getFilters = () => {
+  return axios.get<GenresResponce>('/v2.2/films/filters').then((res) => res.data);
+};
+
+const getFilmsByFilter = (genreId: number) => {
+  return axios
+    .get<FilterResponse>(
+      `/v2.2/films?genres=${genreId}&order=RATING&type=ALL&ratingFrom=6&ratingTo=10&yearFrom=1000&yearTo=3000&page=1`
+    )
+    .then((res) => res.data);
 };
 
 export const api = {
@@ -82,8 +93,9 @@ export const api = {
   searchFilm,
   //getSimilarFilms,
   //getPremiers,
-  //getFilters,
+  getFilters,
   //getFilms, // via filters like 'https://kinopoiskapiunofficial.tech/api/v2.2/films?genres=0&order=RATING&type=ALL&ratingFrom=0&ratingTo=10&yearFrom=1000&yearTo=3000&page=1' \
+  getFilmsByFilter,
   //getPersons,
   //getStaff
   //getStaffById

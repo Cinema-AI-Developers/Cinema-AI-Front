@@ -1,0 +1,15 @@
+.genre-line {
+  padding: 1%;
+  &__title {
+    font-weight: 900;
+    font-size: 1.7em;
+  }
+
+  &__container {
+    margin-top: 2%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-gap: 40px 5px;
+    justify-items: center;
+  }
+}

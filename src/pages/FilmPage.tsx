@@ -25,23 +25,21 @@ const FilmPage = () => {
   } = useQuery({
     queryKey: ['film', { id }],
     queryFn: () => api.getFilmById(id),
-    onSuccess: (data) => {
-      getFilmDescription(data?.description || '');
-    },
+    // onSuccess: (data) => {
+    //   getFilmDescription(data?.description || '');
+    // },
   });
 
-  const { data: filmDescription, mutate: getFilmDescription } = useMutation({
-    mutationFn: (originalDescription: string) =>
-      GPTapi.sendMessageChatGPT(
-        `Фильм: ${filmData?.nameRu}; Описание: ${originalDescription}`,
-        Role.DESCRIPTION
-      ), //GPTapi.sendTextGPT3(originalDescription),
-    onSuccess: (data) => {
-      console.log(data, 'ss');
-    },
-  });
-
-  useEffect(() => {});
+  // const { data: filmDescription, mutate: getFilmDescription } = useMutation({
+  //   mutationFn: (originalDescription: string) =>
+  //     GPTapi.sendMessageChatGPT(
+  //       `Фильм: ${filmData?.nameRu}; Описание: ${originalDescription}`,
+  //       Role.DESCRIPTION
+  //     ), //GPTapi.sendTextGPT3(originalDescription),
+  //   onSuccess: (data) => {
+  //     console.log(data, 'ss');
+  //   },
+  // });
 
   useEffect(() => {
     let script = document.createElement('script');
@@ -68,7 +66,7 @@ const FilmPage = () => {
 
           <div className='film__description-container'>
             <p className='film__description-title'>Описание:</p>
-            <p className='film__description'>{filmDescription || filmData.description}</p>
+            <p className='film__description'>{filmData.description}</p>
           </div>
         </section>
 

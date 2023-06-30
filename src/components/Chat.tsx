@@ -35,7 +35,7 @@ const Chat = (): JSX.Element => {
     mutationFn: (userMessage: string) => GPTapi.sendMessageChatGPT(userMessage, Role.CHAT),
     onSuccess: (data) => {
       setMessages((oldMessages) => {
-        let messages = import.meta.env.DEV ? [...oldMessages] : oldMessages;
+        let messages = [...oldMessages];
         messages.push({ content: data, side: 'left' });
         return messages;
       });

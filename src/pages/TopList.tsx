@@ -16,6 +16,8 @@ const TopList = () => {
     queryFn: () => api.getTopFilms(type as TopTypes, parseInt(page || '1')).then((res) => res.data),
   });
 
+  console.log(filmsData);
+
   const pageInt = parseInt(page || '1');
   //обрез 15ти страниц в случае с топ 100 тк кол-во страниц не соотв действительности
   const pagesCount = type === 'TOP_100_POPULAR_FILMS' ? 20 : filmsData?.pagesCount;
@@ -36,6 +38,7 @@ const TopList = () => {
               rating={filmInfo.rating}
               year={filmInfo.year}
               filmLength={filmInfo.filmLength}
+              filmId={filmInfo.filmId}
             />
           ))}
         </div>

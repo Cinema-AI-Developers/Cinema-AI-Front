@@ -10,11 +10,14 @@
   max-width: 1600px;
   min-width: 300px;
   margin: 0 auto;
-  padding: 0 25px;
+  padding: 0 5%;
   background-color: $background-color;
   font-family: 'Montserrat', Arial, sans-serif;
-  font-weight: 400;
   color: $main-text-color;
+
+  @media screen and (max-width: 1280px) {
+    padding: 0 3%;
+  }
 }
 
 .cards-container {
@@ -22,4 +25,14 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   grid-gap: 40px 5px;
   justify-items: center;
+}
+
+.top-link {
+  display: block;
+  color: $main-text-color;
+  text-decoration: none;
+
+  &_last {
+    margin-bottom: 50px;
+  }
 }

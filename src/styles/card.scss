@@ -19,32 +19,14 @@
     }
   }
 
-  &__rating {
-    display: block;
-    position: absolute;
-    padding: 1px 4px;
-    border-radius: 3px;
-    background-color: rgba(0, 0, 0, 0.5);
-    left: 2px;
-    top: 2px;
-    font-weight: 900;
-    font-size: 17px;
-
-    &_color_red {
-      color: #e61919;
-    }
-
-    &_color_green {
-      color: #19e619;
-    }
-  }
-
   &__photo {
     display: block;
+    width: 200px;
     height: 300px;
     object-fit: cover;
     border-radius: 3px;
     opacity: 1;
+    image-rendering: optimizeQuality;
   }
 
   &__info {

@@ -3,33 +3,39 @@ import axios from 'axios';
 axios.defaults.baseURL = 'https://kinopoiskapiunofficial.tech/api';
 axios.defaults.headers.common['X-API-KEY'] = import.meta.env.VITE_KINOPOISK_KEY;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
+axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 
-const getFilmById = (id: string | undefined) => {
-  fetch(`https://kinopoiskapiunofficial.tech/api/v2.2/films/${id}`, {
-    method: 'GET',
-    headers: {
-      'X-API-KEY': import.meta.env.VITE_KINOPOISK_KEY,
-      'Content-Type': 'application/json',
-    },
-  })
-    .then((res) => res.json())
-    .then((json) => console.log(json))
-    .catch((err) => console.log(err));
-};
+interface Country {
+  country: string;
+}
 
+interface Genre {
+  genre: string;
+}
 interface FilmResponse {
   filmId: number;
   nameRu?: string;
   nameEn?: string;
   year?: string;
+  startYear: string;
+  endYear: string;
   filmLength?: string;
-  countries: [];
-  genres: [];
+  countries: Country[];
+  genres: Genre[];
   rating?: number;
+  ratingKinopoisk?: number;
+  ratingImdb?: number;
   ratingVoteCount?: number;
   posterUrl: string;
   posterUrlPreview: string;
+  nameOriginal?: string;
+  description: string;
+  type: string;
 }
+
+const getFilmById = (id: string | undefined) => {
+  return axios.get<FilmResponse>(`/v2.2/films/${id}`).then((res) => res.data);
+};
 
 interface TopFilmsResponse {
   pagesCount: number;

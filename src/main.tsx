@@ -1,13 +1,14 @@
-import './styles/index.scss';
-import React from 'react';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import Home from './pages/Home';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import App from './App';
 import Alice from './components/Alice';
-import TopList from './pages/TopList';
 import FilmPage from './pages/FilmPage';
+import Home from './pages/Home';
+import SearchPage from './pages/SearchPage';
+import TopList from './pages/TopList';
+import './styles/index.scss';
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
       <Route path='films/:id' element={<FilmPage />} />
       <Route path='alice' element={<Alice />} />
       <Route path='top/:type/:page' element={<TopList />} />
+      <Route path='search/:keyword/:page' element={<SearchPage />} />
     </Route>
   )
 );

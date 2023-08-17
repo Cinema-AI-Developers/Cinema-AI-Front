@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { api } from '../utlis/api';
 import Card from '../components/Card';
+import CardSkeleton from './CardSkeleton';
 
 interface GenreLineProps {
   genreId: number;
@@ -17,7 +18,17 @@ export default function GenreLine({ genreId, genreName }: GenreLineProps) {
     queryFn: () => api.getFilmsByFilter(genreId),
   });
   return isLoading ? (
-    <p>loading</p>
+    <section className='genre-line'>
+      <h3 className='genre-line__title'>{genreName}</h3>
+
+      <div className='genre-line__container'>
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    </section>
   ) : isError ? (
     <p>Error</p>
   ) : (

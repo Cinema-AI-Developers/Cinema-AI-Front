@@ -5,6 +5,10 @@ const Header = () => {
   const [inputKeyword, setInputKeyword] = useState<string>('');
   const navigate = useNavigate();
 
+  function handleSearchClick() {
+    navigate(`/search/${inputKeyword}/1`);
+  }
+
   return (
     <header className='header'>
       <Link to='/' className='header__title'>
@@ -16,7 +20,7 @@ const Header = () => {
           value={inputKeyword}
           onChange={(e) => setInputKeyword(e.target.value)}
           className='header__chat-input'></input>
-        <button onClick={() => navigate(`/search/${inputKeyword}/1`)} className='header__chat-button'>
+        <button onClick={handleSearchClick} className='header__chat-button'>
           Поиск
         </button>
       </div>

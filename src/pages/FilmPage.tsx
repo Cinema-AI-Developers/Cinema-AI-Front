@@ -25,21 +25,7 @@ const FilmPage = () => {
   } = useQuery({
     queryKey: ['film', { id }],
     queryFn: () => api.getFilmById(id),
-    // onSuccess: (data) => {
-    //   getFilmDescription(data?.description || '');
-    // },
   });
-
-  // const { data: filmDescription, mutate: getFilmDescription } = useMutation({
-  //   mutationFn: (originalDescription: string) =>
-  //     GPTapi.sendMessageChatGPT(
-  //       `Фильм: ${filmData?.nameRu}; Описание: ${originalDescription}`,
-  //       Role.DESCRIPTION
-  //     ), //GPTapi.sendTextGPT3(originalDescription),
-  //   onSuccess: (data) => {
-  //     console.log(data, 'ss');
-  //   },
-  // });
 
   useEffect(() => {
     let script = document.createElement('script');

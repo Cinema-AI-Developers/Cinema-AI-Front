@@ -1,12 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Card from '../components/Card';
 import { api, FilmResponse } from '../utlis/api';
+import CardSkeleton from '../components/CardSkeleton';
 
 const SearchPage = () => {
   let { keyword, page } = useParams();
   const [inputKeyword, setInputKeyword] = useState<string>(keyword || '');
+
+  useEffect(() => {
+    setInputKeyword(keyword || '');
+  }, [keyword, page]);
 
   const {
     data: searchData,
@@ -17,12 +22,15 @@ const SearchPage = () => {
     queryFn: () => api.searchFilm(inputKeyword, parseInt(page || '1')),
   });
 
-  console.log(searchData);
-
-  //   const pageInt = parseInt(page || '1');
-
   return searchLoading ? (
-    <p>loading</p>
+    <>
+      <h2 style={{ marginBottom: 40 }}>{'Ключевое слово: ' + inputKeyword}</h2>
+      <div className='cards-container'>
+        {[...Array(20)].map((i) => {
+          return <CardSkeleton key={i} />;
+        })}
+      </div>
+    </>
   ) : isError ? (
     <p>Error</p>
   ) : (

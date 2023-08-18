@@ -3,6 +3,27 @@
   &__title {
     font-weight: 900;
     font-size: 1.7em;
+
+    &-skeleton {
+      height: 31.29px;
+      width: 150px;
+      background-color: rgba(229, 228, 226, 0.1);
+      border-radius: 3px;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: -200px;
+        top: 0;
+        height: 100%;
+        width: 150px;
+        background: linear-gradient(to right, transparent 0%, rgba(229, 228, 226, 0.3) 50%, transparent 100%);
+        animation: load 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+      }
+    }
   }
 
   &__container {

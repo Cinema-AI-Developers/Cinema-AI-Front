@@ -72,7 +72,7 @@ interface TopFilmsResponse {
 export type TopTypes = 'TOP_250_BEST_FILMS' | 'TOP_100_POPULAR_FILMS' | 'TOP_AWAIT_FILMS';
 
 const getTopFilms = (type: TopTypes = 'TOP_250_BEST_FILMS', page: number = 1) => {
-  return axios.get<TopFilmsResponse>(`/v2.2/films/top/?type=${type}&page=${page}`);
+  return axios.get<TopFilmsResponse>(`/v2.2/films/top?type=${type}&page=${page}`);
 };
 
 const getFilters = () => {

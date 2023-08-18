@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { api, TopTypes } from '../utlis/api';
 import Card from '../components/Card';
 import PageNavigation from '../components/PageNavigation';
+import CardSkeleton from '../components/CardSkeleton';
 
 const TopList = () => {
   let { type, page } = useParams();
@@ -16,20 +17,22 @@ const TopList = () => {
     queryFn: () => api.getTopFilms(type as TopTypes, parseInt(page || '1')).then((res) => res.data),
   });
 
-  console.log(filmsData);
-
   const pageInt = parseInt(page || '1');
   //обрез 15ти страниц в случае с топ 100 тк кол-во страниц не соотв действительности
   const pagesCount = type === 'TOP_100_POPULAR_FILMS' ? 20 : filmsData?.pagesCount;
 
   return filmsLoading ? (
-    <p>loading</p>
+    <div className='cards-container cards-container_place_top'>
+      {[...Array(20)].map((i) => {
+        return <CardSkeleton key={i} />;
+      })}
+    </div>
   ) : isError ? (
     <p>Error</p>
   ) : (
     filmsData && (
       <>
-        <div className='cards-container'>
+        <div className='cards-container cards-container_place_top'>
           {filmsData.films.map((filmInfo) => (
             <Card
               key={filmInfo.filmId}

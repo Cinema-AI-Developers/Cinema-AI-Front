@@ -17,7 +17,7 @@ export default function GenreLine({ genreId, genreName }: GenreLineProps) {
     queryKey: ['filminfo', genreId],
     queryFn: () => api.getFilmsByFilter(genreId),
   });
-  return isLoading ? (
+  return isLoading || isError ? (
     <section className='genre-line'>
       <h3 className='genre-line__title'>{genreName}</h3>
 
@@ -29,8 +29,6 @@ export default function GenreLine({ genreId, genreName }: GenreLineProps) {
         <CardSkeleton />
       </div>
     </section>
-  ) : isError ? (
-    <p>Error</p>
   ) : (
     films && (
       <section className='genre-line'>

@@ -6,6 +6,7 @@
   }
 
   &__content {
+    height: 70%;
     display: flex;
     padding: 0 0 0 1%;
     font-family: 'Inter', Arial, sans-serif;
@@ -40,6 +41,7 @@
 
   &__container {
     position: relative;
+    height: 60%;
   }
 
   &__ratings-container {
@@ -81,8 +83,10 @@
 
 #yohoho {
   width: 100% !important;
+  height: 100% !important;
 }
 
 #yohoho-iframe {
   width: 100% !important;
+  height: 100% !important;
 }

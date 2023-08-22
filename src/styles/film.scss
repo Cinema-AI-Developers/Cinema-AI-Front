@@ -7,14 +7,15 @@
 
   &__content {
     height: 70%;
+    width: 100%;
     display: flex;
     padding: 0 0 0 1%;
     font-family: 'Inter', Arial, sans-serif;
   }
 
   &__main-container {
-    max-width: 65%;
-    width: 65%;
+    max-width: 100%;
+    width: 100%;
   }
 
   &__aside-container {
@@ -41,7 +42,7 @@
 
   &__container {
     position: relative;
-    height: 60%;
+    height: 70%;
   }
 
   &__ratings-container {

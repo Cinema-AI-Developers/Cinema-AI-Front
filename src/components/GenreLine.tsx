@@ -2,13 +2,15 @@ import { useQuery } from '@tanstack/react-query';
 import { api } from '../utlis/api';
 import Card from '../components/Card';
 import CardSkeleton from './CardSkeleton';
+import { useState, useEffect } from 'react';
 
 interface GenreLineProps {
   genreId: number;
   genreName: string;
+  cardsCount: number;
 }
 
-export default function GenreLine({ genreId, genreName }: GenreLineProps) {
+export default function GenreLine({ genreId, genreName, cardsCount }: GenreLineProps) {
   const {
     data: films,
     isLoading,
@@ -17,16 +19,15 @@ export default function GenreLine({ genreId, genreName }: GenreLineProps) {
     queryKey: ['filminfo', genreId],
     queryFn: () => api.getFilmsByFilter(genreId),
   });
+
   return isLoading || isError ? (
     <section className='genre-line'>
       <h3 className='genre-line__title'>{genreName}</h3>
 
       <div className='genre-line__container'>
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
-        <CardSkeleton />
+        {[...Array(cardsCount)].map((i) => {
+          return <CardSkeleton key={i} />;
+        })}
       </div>
     </section>
   ) : (
@@ -50,7 +51,7 @@ export default function GenreLine({ genreId, genreName }: GenreLineProps) {
                 />
               );
             })
-            .slice(0, 5)}
+            .slice(0, cardsCount)}
         </div>
       </section>
     )

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import { api } from '../utlis/api';
 import GenreLine from '../components/GenreLine';
 import CardSkeleton from '../components/CardSkeleton';
+import { useResize } from '../hooks/useResize';
+import { useEffect, useState } from 'react';
 
-const genres = [25, 28];
+const genres = [16, 25, 28];
 
 function Home() {
   const {
@@ -15,8 +17,30 @@ function Home() {
     queryKey: ['filter'],
     queryFn: () => api.getFilters(),
   });
-
   console.log(filters);
+
+  const size = useResize();
+  const [cardsCount, setCardsCount] = useState(0);
+
+  useEffect(() => {
+    if (size) {
+      if (size.width < 1020) {
+        setCardsCount(6);
+      } else {
+        setCardsCount(Math.floor(size?.width / 300));
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    if (size) {
+      if (size.width < 1020) {
+        setCardsCount(6);
+      } else {
+        setCardsCount(Math.floor(size?.width / 300));
+      }
+    }
+  }, [size]);
 
   return (
     <>
@@ -36,7 +60,7 @@ function Home() {
               <div className='genre-line__title-skeleton'></div>
 
               <div className='genre-line__container'>
-                {[...Array(5)].map((i) => (
+                {[...Array(cardsCount)].map((i) => (
                   <CardSkeleton key={i} />
                 ))}
               </div>
@@ -53,6 +77,7 @@ function Home() {
                   key={genre.id}
                   genreId={genre.id}
                   genreName={genre.genre.slice(0, 1).toUpperCase() + genre.genre.slice(1)}
+                  cardsCount={cardsCount}
                 />
               );
             })}

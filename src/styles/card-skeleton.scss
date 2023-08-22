@@ -8,29 +8,29 @@
 }
 
 .skeleton {
-  width: 200px;
-  height: 300px;
+  width: 240px;
+  height: 340px;
   background-color: rgba(229, 228, 226, 0.1);
-  border-radius: 3px;
+  border-radius: 5px;
   position: relative;
   overflow: hidden;
 
   &-container {
-    width: 220px;
+    width: 240px;
   }
 
   &-name {
-    margin-top: 0.3em;
-    height: 19.55px;
+    margin-top: 0.5em;
+    height: 21.85px;
     width: 117px;
     position: relative;
     overflow: hidden;
     background-color: rgba(229, 228, 226, 0.1);
-    border-radius: 3px;
+    border-radius: 5px;
   }
 
   &-info {
-    width: 200px;
+    width: 240px;
     margin-top: 0.5em;
     display: flex;
     justify-content: space-between;
@@ -38,20 +38,20 @@
 
   &-year {
     width: 65px;
-    height: 16.1px;
+    height: 19.55px;
     position: relative;
     overflow: hidden;
     background-color: rgba(229, 228, 226, 0.1);
-    border-radius: 3px;
+    border-radius: 5px;
   }
 
   &-duration {
     width: 90px;
-    height: 16.1px;
+    height: 19.55px;
     position: relative;
     overflow: hidden;
     background-color: rgba(229, 228, 226, 0.1);
-    border-radius: 3px;
+    border-radius: 5px;
   }
 }
 

@@ -11,7 +11,7 @@ interface CardProps {
 }
 
 const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) => {
-  const validateRating = (rating: number | undefined | string) => {
+  const validateRating = (rating: number | undefined | string | null) => {
     return rating && rating.toString().includes('%') ? false : true;
   };
 
@@ -22,10 +22,12 @@ const Card = ({ title, imgUrl, rating, year, filmLength, filmId }: CardProps) =>
     navigate(`/films/${filmId}`);
   };
 
+  console.log(rating);
+
   return (
     <div className='card'>
       <button className='card__button' onClick={onCardClick}>
-        {validateRating(rating) && <Rating rating={rating} place='card' />}
+        {validateRating(rating) && rating !== 'null' && <Rating rating={rating} place='card' />}
         <img src={imgUrl} alt={title} className='card__photo' />
       </button>
       <p className='card__title'>{title}</p>

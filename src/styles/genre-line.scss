@@ -29,8 +29,8 @@
   &__container {
     margin-top: 2%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    grid-gap: 40px 5px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-gap: 40px 10px;
     justify-items: center;
   }
 }
